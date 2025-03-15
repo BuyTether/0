@@ -48,8 +48,8 @@
         }
 
         .qr-code img {
-            width: 150px;
-            height: 150px;
+            width: 140px;
+            height: 140px;
             border: 2px solid #ddd;
             border-radius: 8px;
         }
@@ -207,6 +207,8 @@
         <div class="logo">
             <br>
             <br>
+            <br>
+            <br>
             <img src="https://via.placeholder.com/100x30" alt="UAB Helis Play">
         </div>
 
@@ -229,7 +231,9 @@
             <div class="input-container">
                 <input id="amount" type="text" value="***" readonly>
                 <div class="currency">
-                    <div class="icon">T</div>
+                    <div class="copy-icon" onclick="copyWallet()">
+                        <img src="https://bin.bnbstatic.com/image/admin_mgs_image_upload/20240508/6180cdb6-8480-4a3c-a8a9-8a193a89fc5e.png" alt="icon" style="width: 25px; height: 25px;">
+                      </div>
                     USDT20
                 </div>
 
@@ -239,7 +243,7 @@
         <div class="wallet-section">
             <label for="wallet">Network</label>
             <div class="input-container">
-                <input id="wallet" type="text" value="Tron (TRC20)" readonly="">
+                <input id="wallet" type="text" value="TRX Tron (TRC20)" readonly="">
                 <div class="copy-icon" onclick="copyWallet()">
   <img src="https://files.catbox.moe/13xc5q.png" alt="icon" style="width: 30px; height: 25px;">
 </div>
