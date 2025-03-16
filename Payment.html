@@ -1,325 +1,401 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payment Page</title>
-
-<style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+    <title>Bybit Style Cards + Countdown</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f9fafa;
+            background-color: #ffffff;
+            color: rgb(255, 255, 255);
+            margin: 0;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            color: #333;
-        }
-
-        .container {
-            background-color: #fff;
-            width: 380px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            padding: 25px;
+            flex-direction: column;
+            min-height: 100vh;
             text-align: center;
+        }
+
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 50px;
+        }
+        .countdown-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px #45d3dc;
+            font-size: 24px;
+            font-weight: bold;
             position: relative;
+            color: black;
+            text-align: center;
         }
-
-        
-
-        .container h1 {
-            font-size: 18px;
-            font-weight: bold;
-            color: #222;
-            margin-bottom: 20px;
-        }
-
-        .qr-code {
-            margin: 20px 0;
-            display: flex;
-            justify-content: center;
-        }
-
-        .qr-code img {
-            width: 140px;
-            height: 140px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-        }
-
-        .note {
-            background-color: #f0f9ff;
-            color: #0177ff;
-            font-size: 14px;
-            padding: 10px;
-            border-radius: 6px;
-            margin: 15px 0;
-            text-align: left;
-        }
-
-        .separator {
-            display: flex;
-            align-items: center;
-            margin: 20px 0;
-        }
-
-        .separator::before,
-        .separator::after {
-            content: "";
-            flex: 1;
-            height: 1px;
-            background: #ddd;
-        }
-
-        .separator span {
-            margin: 0 10px;
-            color: #888;
-            font-size: 12px;
-            font-weight: bold;
-        }
-
-        .amount-section,
-        .wallet-section {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-
-        .amount-section label,
-        .wallet-section label {
-            font-size: 14px;
-            font-weight: bold;
+        .countdown-box span {
             display: block;
-            margin-bottom: 8px;
-        }
-
-        .input-container {
-            display: flex;
-            align-items: center;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            overflow: hidden;
-            background-color: #f4f4f4;
-        }
-
-        .input-container input {
-            flex: 1;
-            padding: 10px;
             font-size: 14px;
-            border: none;
-            background: transparent;
-            text-align: left;
+            font-weight: normal;
+            color: gray;
+        }
+        .countdown-box::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: #18a0a2;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
         }
 
-        .input-container .copy-icon {
-            padding: 0 0px;
-            font-size: 16px;
-            cursor: pointer;
-            color: #0177ff;
-        }
-
-        .input-container .currency {
-            display: flex;
-            align-items: center;
-            gap: 0px;
-            padding: 0 10px;
-            font-weight: bold;
-            background-color: #f4f4f4;
-            border-left: 1px solid #ddd;
-        }
-
-        .input-container .currency .icon {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 20px;
-            height: 20px;
-            background-color: #00a65a;
-            color: #fff;
-            border-radius: 50%;
-            font-size: 12px;
-            font-weight: bold;
-        }
-
-        .footer {
-            font-size: 11px;
-            color: #aaa;
-            margin-top: 25px;
-        }
-
-        .details {
+        .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 20px;
-            padding: 10px 15px;
-            background-color: #f8f9fa;
-            border: 1px solid #ddd;
-            border-radius: 6px;
+            padding: 15px 20px;
+            background: #fff;
+            border-bottom: 1px solid #ddd;
+        }
+        .header img {
+            height: 32px;
+        }
+
+        .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            padding: 50px 20px;
+        }
+
+        .card {
             position: relative;
-        }
-
-        .details::before {
-            content: "";
-            position: absolute;
-            top: -10px;
-            left: 0;
-            width: 100%;
-            height: 0.8px;
-            background-color: #aaa;
-            border-radius: 6px;
-        }
-
-        .details .info {
+            width: 90%;
+            max-width: 400px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px #45d3dc;
             display: flex;
-            align-items: center;
-            font-size: 14px;
-            color: #555;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            color: black;
         }
 
-        .details .info .arrow {
+        .card h3 {
             font-size: 18px;
-            margin-right: 8px;
-            color: #0177ff;
+            color: #019394;
+            margin: 0;
         }
 
-        .details .timer {
+        .card0 {
+            position: relative;
+            width: 90%;
+            max-width: 400px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px #87e2e9;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            color: black;
+        }
+
+        .card0 h3 {
+            font-size: 18px;
+            color: #45d3dc;
+            margin: 0;
+        }
+        .invite0-btn {
+    width: 95%;
+    background: #faf7f0;
+    color: rgb(122, 122, 122);
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 15px;
+    display: block;
+}
+
+        .details {
+            margin: 10px 0;
+            font-size: 14px;
+            color: #000000;
+        }
+
+        .invite-btn {
+            width: 95%;
+            background: #45d3dc;
+            color: rgb(255, 255, 255);
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 15px;
+            display: block;
+        }
+
+        /* Footer Styling */
+        .footer {
+            width: 100%;
+            background-color: #0a0a0a;
+            padding: 40px 0px;
+            text-align: center;
+            position: relative;
+            margin-top: auto;
+        }
+
+        .footer-logo {
             display: flex;
             align-items: center;
-            font-size: 14px;
-            color: #555;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
         }
 
-        .details .timer .clock {
-            margin-right: 5px;
-            color: #0177ff;
+        .footer-logo img {
+            width: 40px;
         }
+
+        .footer-logo span {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .footer-text {
+            font-size: 16px;
+            color: #aaa;
+            margin-bottom: 20px;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 20px;
+            transition: 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #f9b62d;
+        }
+
+        .copyright {
+            font-size: 14px;
+            color: #666;
+        }
+        h1 {
+    display: block;
+    font-size: 2em;
+    color: rgb(0, 0, 0);
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    unicode-bidi: isolate;
+}
+
+p {
+    display: block;
+    color: rgb(0, 0, 0);
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    unicode-bidi: isolate;
+}
+
+/* Vidéo en haut de la page */
+.background-video-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50vh; /* La vidéo occupe 50% de la hauteur de la page */
+    object-fit: cover;
+    z-index: -1; /* La vidéo sera en arrière-plan */
+}
+
+/* Vidéo en bas de la page */
+.background-video-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50vh; /* La vidéo occupe 50% de la hauteur de la page */
+    object-fit: cover;
+    z-index: -1; /* La vidéo sera en arrière-plan */
+}
+/* Vidéo en bas de la page */
+.background-video-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50vh; /* La vidéo occupe 50% de la hauteur de la page */
+    object-fit: cover;
+    z-index: -1; /* La vidéo sera en arrière-plan */
+}
+
+
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="logo">
-            <br>
-            <br>
-            <br>
-            <br>
-        </div>
-
-        <h1>Scan QR code with your wallet or copy the details to complete your payment.</h1>
-
-        <div class="qr-code">
-            <img src="https://files.catbox.moe/tcx03w.png" alt="QR Code">
-        </div>
-
-        <div class="note">
-            Some wallets may not read the QR code correctly. In this case, please copy or scan the wallet address.
-        </div>
-
-        <div class="separator">
-            <span>OR</span>
-        </div>
-
-        <div class="amount-section">
-            <label for="amount">Amount</label>
-            <div class="input-container">
-                <input id="amount" type="text" value="***" readonly>
-                <div class="currency">
-                    <div class="copy-icon" onclick="copyWallet()">
-                        <img src="https://files.catbox.moe/ten25s.png" alt="icon" style="width: 25px; height: 25px;">
-                      </div>
-                    USDT20
-                </div>
-
-            </div>
-        </div>
-
-        <div class="wallet-section">
-            <label for="wallet">Network</label>
-            <div class="input-container">
-                <input id="wallet" type="text" value="TRX Tron (TRC20)" readonly="">
-                <div class="copy-icon" onclick="copyWallet()">
-  <img src="https://files.catbox.moe/13xc5q.png" alt="icon" style="width: 30px; height: 25px;">
-</div>
-            </div>
-        </div>
-
-        <div class="wallet-section">
-            <label for="wallet">Wallet Address</label>
-            <div class="input-container">
-                <input id="wallet" type="text" value="TSmythSUVtkup9SiGBde94PRyBK6knRU9j" readonly>
-                <div class="copy-icon" onclick="copyWallet()">📋</div>
-            </div>
-        </div>
-
-        <div class="note">
-            <strong>Tether:</strong> Send USDT20 on Ethereum blockchain, otherwise your funds will be lost.
-        </div>
-
-        <div class="details">
-            <div class="info">
-                <span class="arrow">›</span> Details
-            </div>
-            <div class="timer">
-                <span class="clock">⏰</span>
-                <span id="timer">59:59</span>
-            </div>
-        </div>
-
-        <div class="footer">
-            Powered by <strong>Coinify</strong>
-        </div>
+    <div class="header">
+        <img src="https://cdn.freelogovectors.net/svg08/tether_logo-freelogovectors.net_.svg" alt="Tether Logo">
     </div>
 
+    <!-- Vidéo en haut -->
+<video class="background-video-top" autoplay muted loop>
+    <source src="https://files.catbox.moe/tcnicb.mp4" type="video/mp4">
+    Ton navigateur ne supporte pas la balise vidéo.
+</video>
+<!-- Vidéo en moyane -->
+<video class="background-video-bottom" autoplay muted loop>
+    <source src="" type="video/mp4">
+    Ton navigateur ne supporte pas la balise vidéo.
+</video>
+
+
+    
+
+    <div class="title login">
+        <i data-visualcompletion="css-img" aria-label="Instagram" class="" role="img" style="background-image: url(&quot;https://files.catbox.moe/7dosdv.webp&quot;); background-position: 0px 0px; background-size: 176px 186px; width: 174px; height: 220px; background-repeat: no-repeat; display: inline-block;"></i>
+      </div>
+      
+      <style>
+        .title {
+          display: flex;
+          justify-content: center; /* Centers content horizontally */
+          align-items: center;     /* Centers content vertically */
+          height: 30vh;           /* Ensures the parent div takes the full height of the viewport */
+        }
+      </style>
+      
+    <h1>Buy <span style="color: #18a0a2;font-weight: bold;">USDT</span> Half price</h1>
+    <div class="countdown-container">
+        <div class="countdown-box">            
+            <div id="days">48</div>
+            <span>Days</span>
+        </div>
+        <div class="countdown-box">
+            <div id="hours">3</div>
+            <span>Hours</span>
+        </div>
+        <div class="countdown-box">
+            <div id="minutes">36</div>
+            <span>Minutes</span>
+        </div>
+        <div class="countdown-box">
+            <div id="seconds">58</div>
+            <span>Seconds</span>
+        </div>
+    </div>
+    <p>Secure & Instant Transactions <strong>Buy USDT at the Best Rates    </strong></p>
+
+
+    <div class="container" id="packages">
+        <!-- Package 0 -->
+        <div class="card0">
+            <h3>Get 50 USDT for only 10 USDT</h3>
+            <div class="details">
+                <div><span>Discount unavailable</span></div>
+            </div>
+            <a class="invite0-btn">Get Now</a>
+        </div>
+        <!-- Package 1 -->
+        <div class="card">
+            <h3>Get 100 USDT for only 70 USDT</h3>
+            <div class="details">
+                <div><span>Discount available for only 15 people left!</span></div>
+            </div>
+            <a href="payment.html?amount=70" class="invite-btn">Get Now</a>
+        </div>
+
+        <!-- Package 0 -->
+        <div class="card0">
+            <h3>Get 500 USDT for only 250 USDT</h3>
+            <div class="details">
+                <div><span>Discount unavailable</span></div>
+            </div>
+            <a class="invite0-btn">Get Now</a>
+        </div>
+        
+        <!-- Package 2 -->
+        <div class="card">
+            <h3>Get 500 USDT for only 280 USDT</h3>
+            <div class="details">
+                <div><span>Discount available for only 15 people left!</span></div>
+            </div>
+            <a href="payment.html?amount=280" class="invite-btn">Get Now</a>
+        </div>
+    
+        <!-- Package 3 -->
+        <div class="card">
+            <h3>Get 1000 USDT for only 500 USDT</h3>
+            <div class="details">
+                <div><span>Discount available for only 15 people left!</span></div>
+            </div>
+            <a href="payment.html?amount=500" class="invite-btn">Get Now</a>
+        </div>
+    
+        <!-- Package 4 -->
+        <div class="card">
+            <h3>Get 5000 USDT for only 2200 USDT</h3>
+            <div class="details">
+                <div><span>Discount available for only 15 people left!</span></div>
+            </div>
+            <a href="payment.html?amount=2200" class="invite-btn">Get Now</a>
+        </div>
+    </div>
+    
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-logo">
+            <img src="https://cryptologos.cc/logos/tether-usdt-logo.png" alt="Tether Logo">
+            <span>tether</span>
+        </div>
+        
+        <p class="footer-text">Driving the Future of Money</p>
+        
+        <p class="copyright">Copyright © 2013 - 2025 Tether Operations, S.A. de C.V. All rights reserved.</p>
+    </footer>
+
     <script>
+        function updateCountdown() {
+            const targetDate = new Date("May 1, 2025 19:59:00 UTC").getTime();
+            const now = new Date().getTime();
+            const timeLeft = targetDate - now;
 
-        // Extract the amount from the URL
-function getQueryParameter(name) {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(name);
-}
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
-// Use the value to set the amount
-window.onload = function() {
-    const amount = getQueryParameter('amount');  // Get the amount from the URL
-    if (amount) {
-        document.getElementById('amount').value = amount;  // Update the input field with the amount
-    }
-}
-
-
-        function copyAmount() {
-            const amountField = document.getElementById('amount');
-            navigator.clipboard.writeText(amountField.value).then(() => {
-                alert("Amount copied to clipboard!");
-            });
+            document.getElementById("days").innerText = days;
+            document.getElementById("hours").innerText = hours;
+            document.getElementById("minutes").innerText = minutes;
+            document.getElementById("seconds").innerText = seconds;
         }
-
-        
-
-        // Timer function to update countdown
-        let timeRemaining = 59 * 60 + 58; // 59 minutes 58 seconds
-        const timerElement = document.getElementById('timer');
-
-        function updateTimer() {
-            const minutes = Math.floor(timeRemaining / 60);
-            const seconds = timeRemaining % 60;
-            timerElement.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
-            if (timeRemaining === 0) {
-                clearInterval(timerInterval);
-                timerElement.textContent = "Time expired!";
-            } else {
-                timeRemaining--;
-            }
-        }
-        
-
-        const timerInterval = setInterval(updateTimer, 1000);
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
     </script>
-</body>
-</html>
+
+
+</body></html>
