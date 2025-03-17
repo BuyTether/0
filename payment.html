@@ -27,7 +27,7 @@
             width: 380px;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            padding: 25px;
+            padding: 10px;
             text-align: center;
             position: relative;
         }
@@ -125,15 +125,15 @@
         }
 
         .input-container .currency {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            padding: 0 10px;
-            font-weight: bold;
-            background-color: #f4f4f4;
-            border-left: 1px solid #ddd;
-        }
-
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 0 10px;
+    font-weight: bold;
+    background-color: #f4f4f4;
+    border-left: 1px solid #ddd;
+    transform: translateX(-20px); /* Décale l'icône un peu vers la gauche */
+}
         .input-container .currency .icon {
             display: flex;
             justify-content: center;
@@ -217,7 +217,7 @@
 
         .loader {
             border: 4px solid #f3f3f3;
-            border-top: 4px solid #3498db;
+            border-top: 4px solid #44acac;
             border-radius: 50%;
             width: 40px;
             height: 40px;
@@ -262,7 +262,7 @@
                     <div class="copy-icon" onclick="copyWallet()">
                         <img src="https://files.catbox.moe/ten25s.png" alt="icon" style="width: 25px; height: 25px;">
                       </div>
-                    USDT20
+                    USDTTRC20
                 </div>
 
             </div>
@@ -287,7 +287,7 @@
         </div>
 
         <div class="note">
-            <strong>Tether:</strong> Send USDT20 on Ethereum blockchain, otherwise your funds will be lost.
+            <strong>Tether:</strong> Send USDTTR20 on Ethereum blockchain, otherwise your funds will be lost.
         </div>
 
         <div class="details">
@@ -368,7 +368,7 @@ function copyWallet() {
     setTimeout(() => {
         document.getElementById("loading-screen").style.display = "none";
         document.querySelector(".container").style.display = "block";
-    }, 15000);
+    }, 000);
 
     // Extraire le montant de l'URL
     const amount = getQueryParameter('amount');
