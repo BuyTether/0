@@ -220,6 +220,82 @@ p {
     unicode-bidi: isolate;
 }
 
+        /* Footer Styling */
+        .footers {
+            width: 100%;
+            background-color: #44acac;
+            padding: 1px 0px;
+            text-align: center;
+            position: relative;
+            margin-top: auto;
+        }
+
+        .footers-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .footers-logo img {
+            width: 30px;
+        }
+
+        .footers-logo span {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .footers-text {
+            font-size: 16px;
+            color: #aaa;
+            margin-bottom: 20px;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 20px;
+            transition: 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #f9b62d;
+        }
+
+        .copyright {
+            font-size: 14px;
+            color: #666;
+        }
+        h1 {
+    display: block;
+    font-size: 2em;
+    color: rgb(0, 0, 0);
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    unicode-bidi: isolate;
+}
+
+p {
+    display: block;
+    color: rgb(0, 0, 0);
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    unicode-bidi: isolate;
+}
+
 /* Vidéo en haut de la page */
 .background-video-top {
     position: absolute;
@@ -363,7 +439,7 @@ p {
             <div class="details">
                 <div><span>Discount available for only 15 people left!</span></div>
             </div>
-            <a href="#" class="invite-btn" onclick="showLoading('payment.html?amount=70')">Get Now</a>
+            <a href="payment.html?amount=280" class="invite-btn">Get Now</a>
         </div>
 
         <!-- Package 0 -->
@@ -405,18 +481,18 @@ p {
 
     
 
-   <!-- Footer -->
-   <footer class="footer">
-    <div class="footer-logo">
-        <img src="https://cryptologos.cc/logos/tether-usdt-logo.png" alt="Tether Logo">
-        <span>tether</span>
+   <!-- Footers -->
+   <footer class="footers">
+    <br>
+    <div class="footers-logo">
+        <img src="https://static.thenounproject.com/png/3856025-200.png" alt="Tether Logo" style="width: 40px;">
+        <span>Instant Transactions</span>
     </div>
-    
-    <p class="footer-text">Driving the Future of Money</p>
-    
-    <p class="copyright">Copyright © 2013 - 2025 Tether Operations, S.A. de C.V. All rights reserved.</p>
+    <div class="footers-logo">
+        <img src="https://cdn-icons-png.flaticon.com/512/6993/6993594.png" alt="Tether Logo">
+        <span>Secure Payment</span>
+    </div>
 </footer>
-<br>
 <br>
 
 
