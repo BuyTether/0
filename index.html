@@ -68,7 +68,7 @@
             flex-direction: column;
             align-items: center;
             gap: 15px;
-            padding: 50px 20px;
+            padding: 20px 20px;
         }
 
         .card {
@@ -416,12 +416,38 @@ p {
         <div id="loading-screen">
             <img src="https://openseauserdata.com/files/bb8d7f8bb662338f03224cb67bbccf0b.gif" alt="Secure Payment Loading">
         </div>
+
+        <div class="container" style="display: block;">
+            <p>Secure & Instant Transactions <strong> Today's Offer 53%Discount Price</strong></p>
+        </div>
+
+        <div class="warning">
+            <span class="warning-icon">⚠️</span>
+            <span class="warning-text"><br>Remember: This 56% discount is limited and only available for the first transaction.<br>.</span>
+        </div>
         
-            <div class="container">
-                <!-- Ton contenu ici -->
-            </div>
+        <style>
+            .warning {
+                display: flex;
+                align-items: center;
+                justify-content: center; /* Centrer horizontalement */
+                text-align: center; /* Centrer le texte */
+                background-color: #fff3cd;
+                color: #856404;
+                padding: 1px;
+                border-radius: 5px;
+                font-size: 16px;
+                font-weight: bold;
+                width: 100%; /* Prendre toute la largeur */
+            }
+        
+            .warning-icon {
+                margin-right: 8px;
+                font-size: 20px;
+            }
+        </style>
+        <br>
         </body>
-    <p>Secure & Instant Transactions <strong> Today's Offer 53%Discount Price</strong></p>
 
 
     <div class="container" id="packages">
@@ -439,7 +465,7 @@ p {
             <div class="details">
                 <div><span>Discount available for only 15 people left!</span></div>
             </div>
-            <a href="payment.html?amount=280" class="invite-btn">Get Now</a>
+            <a href="payment.html?amount=70" class="invite-btn">Get Now</a>
         </div>
 
         <!-- Package 0 -->
@@ -535,7 +561,7 @@ p {
     setTimeout(() => {
         document.getElementById("loading-screen").style.display = "none";
         document.querySelector(".container").style.display = "block";
-    }, 5000);
+    }, 4000);
 
     // Extraire le montant de l'URL
     const amount = getQueryParameter('amount');
